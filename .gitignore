@@ -1,43 +1,34 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# -*- coding: utf-8 -*-
+"""
 
-# Folder config file
-Desktop.ini
+@author: Maharsh / Adeline
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+"""
+#Labels netTime updateTime iteration r egamma obs act dist pktNum beh_mode  mode_duration vid_count prediction era learn_prediction use_prediction CliffL CliffR CliffFL CliffFR Distance Rotate IRbyte WheelBump DriveReq DriveCmd Voltage Current Overcurrent Button image
+import os
+import pylab as P
+from matplotlib import pyplot as PLT
+print (os.getcwd())c#os.chdir("dropbox");
+logfileLocation = "./logfiles/nohumanrobot-y2014-m08-d06-h16-m01-s14.logfile";
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
 
-# Windows shortcuts
-*.lnk
+distance = P.loadtxt(logfileLocation, usecols = [7], skiprows = 5)
+time = P.loadtxt(logfileLocation, usecols = [0], skiprows = 5)
+era = P.loadtxt(logfileLocation, usecols = [13], skiprows = 5)
 
-# =========================
-# Operating System Files
-# =========================
+totalDistance = 0
 
-# OSX
-# =========================
 
-.DS_Store
-.AppleDouble
-.LSOverride
+#for i in range(len(distance)):
+#    print ("Distance: " + str(distance[i]) + "mm\nTime: " + str(time[i]) + "s" + "Era: " + str(era[i]) + "\n\n")
 
-# Thumbnails
-._*
+for i in range(len(era)):
+    if (era[i] == 5):
+        totalDistance += distance[i]
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+print("Total Distance Travelled: " + str(totalDistance / 1000))
+#P.plot(time, distance)
+#P.plot(time, era)
+#P.show()
+    
+    
